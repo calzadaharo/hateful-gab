@@ -1,0 +1,2 @@
+# Ignore lib directory containing .jar file
+lib/
