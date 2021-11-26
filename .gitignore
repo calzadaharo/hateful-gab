@@ -1,2 +1,2 @@
-# Ignore lib directory containing .jar file
-lib/
+# Ignore raphtory.jar file
+**/raphtory.jar
