@@ -2,6 +2,6 @@
 **/raphtory.jar
 
 # Ignore directories
-/.bsp
-/.idea
-/target
+.bsp/
+.idea/
+target/
