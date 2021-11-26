@@ -1,2 +1,7 @@
 # Ignore raphtory.jar file
 **/raphtory.jar
+
+# Ignore directories
+/.bsp
+/.idea
+/target
