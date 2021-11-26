@@ -12,5 +12,5 @@ object Runner extends App {
   val builder   = new HGGraphBuilder()
   val rg        = RaphtoryGraph[String](source,builder)
 
-  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),35000)
+  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),42977)
 }

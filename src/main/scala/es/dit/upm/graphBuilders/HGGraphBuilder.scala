@@ -18,10 +18,10 @@ class HGGraphBuilder extends GraphBuilder[String] {
     val parent = dataLine(3)
     val parentID = assignID(parent)
 
-    val repost = dataLine(4)
-    val repostID = assignID(parent)
+    val initial = dataLine(4)
+    val initialID = assignID(parent)
 
-    if (parent == "0" && repost == "0") {
+    if (parent == "0" && initial == "0") {
       addVertex(timestamp, vertexID, Properties(
         ImmutableProperty("name",vertex),
         ImmutableProperty("author",user),
@@ -44,11 +44,11 @@ class HGGraphBuilder extends GraphBuilder[String] {
         ImmutableProperty("name",vertex),
         ImmutableProperty("author",user),
         ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","repost")),
+        ImmutableProperty("type","initial")),
         Type("Post")
       )
-      addVertex(timestamp, repostID, Properties(ImmutableProperty("name",repost)), Type("Post"))
-      addEdge(timestamp,vertexID,repostID, Type("Repost"))
+      addVertex(timestamp, initialID, Properties(ImmutableProperty("name",initial)), Type("Post"))
+      addEdge(timestamp,vertexID, initialID, Type("Repost"))
     }
   }
 }
