@@ -40,7 +40,8 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
           vertex.getPropertyOrElse("name","PROBLEM"),
           vertex.getStateOrElse("needed",true),
           vertex.getStateOrElse("cascade",null),
-          vertex.getStateOrElse("level",null))
+          vertex.getStateOrElse("level",null)
+          ,vertex.getPropertyOrElse("hateful","PROBLEM"))
       })
 
       .writeTo(path)
