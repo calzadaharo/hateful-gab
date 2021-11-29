@@ -36,8 +36,7 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
       }, iterations = 100, executeMessagedOnly = true)
 
       .select ({ vertex =>
-        Row(vertex.ID,
-          vertex.getPropertyOrElse("name","PROBLEM"),
+        Row(vertex.getPropertyOrElse("name","PROBLEM"),
           vertex.getStateOrElse("needed",true),
           vertex.getStateOrElse("cascade",null),
           vertex.getStateOrElse("level",null)
