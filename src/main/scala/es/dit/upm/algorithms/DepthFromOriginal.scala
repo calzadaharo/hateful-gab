@@ -11,7 +11,6 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
       .step ({
         vertex =>
           if (vertex.getAllNeighbours().length == 0) {
-            vertex.setState("needed", false)
             vertex voteToHalt
           } else
           if (vertex.getAllNeighbours().length > 0 &&
@@ -21,7 +20,6 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
             vertex.messageAllIngoingNeighbors(vertex.ID,0)
             vertex voteToHalt
           }
-//
       })
 
       .iterate ({
@@ -32,12 +30,10 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
           vertex.setState("level",level)
           vertex.setState("cascade",cascade)
           vertex.messageAllIngoingNeighbors(cascade,level)
-//          vertex voteToHalt()
-      }, iterations = 100, executeMessagedOnly = true)
+      }, iterations = 10000, executeMessagedOnly = true)
 
       .select ({ vertex =>
         Row(vertex.getPropertyOrElse("name","PROBLEM"),
-          vertex.getStateOrElse("needed",true),
           vertex.getStateOrElse("cascade",null),
           vertex.getStateOrElse("level",null)
           ,vertex.getPropertyOrElse("hateful","PROBLEM"))
