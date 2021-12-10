@@ -9,6 +9,8 @@ import com.raphtory.spouts.FileSpout
 object Runner extends App {
   val source    = new FileSpout(
     "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data")
+//  val source    = new FileSpout(
+//    "hdfs://com31.dit.upm.es:9000/data/rcalzada/datasets/definitive/hateful_gab.csv/part-00000-9acc9c04-13c9-415b-a378-ee5e91f0bab0-c000.csv")
 
   val builder   = new HGGraphBuilder()
   val rg        = RaphtoryGraph[String](source,builder)
