@@ -31,18 +31,20 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
 
   final case class HDFSManager private () {
     val stream = fs.open(status(0).getPath)
-    status = status.slice(1,status.length-1)
+    status = status.slice(1,status.length)
     val bufferReader = new BufferedReader(new InputStreamReader(stream))
 
     def finished(line: String): Boolean = {
       if (line == null) {
         if(status.length > 0) {
           hdfsManager = HDFSManager()
+          println("Still loading Spout...")
           false
         } else {
           true
         }
       } else {
+        println("Spout loaded!")
         false
       }
     }
