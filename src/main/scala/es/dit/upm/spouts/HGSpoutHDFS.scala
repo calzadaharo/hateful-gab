@@ -20,7 +20,7 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
   override def closeDataSource(): Unit = {}
 
   override def generateData(): Option[String] = {
-    val line = hdfsManager.bufferReader.readLine()
+    val line = hdfsManager.nextLine()
     if (hdfsManager.finished(line)) {
       dataSourceComplete()
       None
@@ -34,6 +34,10 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
     status = status.slice(1,status.length)
     val bufferReader = new BufferedReader(new InputStreamReader(stream))
 
+    def nextLine(): String = {
+      bufferReader.readLine()
+    }
+
     def finished(line: String): Boolean = {
       if (line == null) {
         if(status.length > 0) {
@@ -41,10 +45,10 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
           println("Still loading Spout...")
           false
         } else {
+          println("Spout loaded!")
           true
         }
       } else {
-        println("Spout loaded!")
         false
       }
     }
