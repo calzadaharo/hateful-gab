@@ -3,14 +3,15 @@ package es.dit.upm
 import es.dit.upm.graphBuilders.HGGraphBuilder
 import es.dit.upm.algorithms.DepthFromOriginal
 import com.raphtory.core.build.server.RaphtoryGraph
+import es.dit.upm.spouts.HGSpoutHDFS
 //import com.raphtory.algorithms.{ConnectedComponents}
 import com.raphtory.spouts.FileSpout
 
 object Runner extends App {
   val source    = new FileSpout(
     "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data")
-//  val source    = new FileSpout(
-//    "hdfs://com31.dit.upm.es:9000/data/rcalzada/datasets/definitive/hateful_gab.csv/part-00000-9acc9c04-13c9-415b-a378-ee5e91f0bab0-c000.csv")
+//  val source    = new HGSpoutHDFS(
+//    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
   val builder   = new HGGraphBuilder()
   val rg        = RaphtoryGraph[String](source,builder)
@@ -20,7 +21,7 @@ object Runner extends App {
   // Partition 0
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 3062658)
 
-  // Partition 1
+//   Partition 1
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
 
 

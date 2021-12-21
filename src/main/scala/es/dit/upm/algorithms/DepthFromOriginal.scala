@@ -11,14 +11,14 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
       .step ({
         vertex =>
           if (vertex.getAllNeighbours().length == 0) {
-            vertex voteToHalt
+            vertex.voteToHalt
           } else
           if (vertex.getAllNeighbours().length > 0 &&
             vertex.getPropertyOrElse("type",null) == "original") {
             vertex.setState("level",0)
             vertex.setState("cascade",vertex.ID)
             vertex.messageAllIngoingNeighbors(vertex.ID,0)
-            vertex voteToHalt
+            vertex.voteToHalt
           }
       })
 
