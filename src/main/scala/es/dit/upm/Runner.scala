@@ -23,7 +23,4 @@ object Runner extends App {
 
 //   Partition 1
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
-
-
-
 }
