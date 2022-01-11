@@ -6,5 +6,6 @@ import es.dit.upm.algorithms.DepthFromOriginal
 
 object Client extends App {
   val client = new RaphtoryClient("localhost:1600",1700)
+  println("WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORKIIIIIIIIIIIIINNNNNNNNNNNG")
   client.pointQuery(DepthFromOriginal("/home/rodrigo/output/partitioned"),42977)
 }

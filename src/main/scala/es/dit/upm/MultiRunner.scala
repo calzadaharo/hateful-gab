@@ -10,11 +10,11 @@ import com.raphtory.spouts.FileSpout
 
 object MultiRunner extends RaphtoryService[String]{
 
-//  override def defineSpout: Spout[String] =
-//    new FileSpout("src/main/scala/com/raphtory/dev/lotr", "lotr.csv")
   override def defineSpout: Spout[String] =
-    new HGSpoutHDFS("hdfs://com31.dit.upm.es:9000/",
-      "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
+    new FileSpout("/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data")
+//  override def defineSpout: Spout[String] =
+//    new HGSpoutHDFS("hdfs://com31.dit.upm.es:9000/",
+//      "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
   override def defineBuilder: GraphBuilder[String] =
     new HGGraphBuilder()
