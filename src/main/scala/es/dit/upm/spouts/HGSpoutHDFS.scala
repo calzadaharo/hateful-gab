@@ -1,15 +1,16 @@
-package es.dit.upm.spouts
+package com.raphtory.spouts
 
 import com.raphtory.core.components.spout.Spout
-
-import org.apache.hadoop.conf.Configuration
-import org.apache.hadoop.fs.{FileSystem, Path}
 
 import java.io.{BufferedReader, InputStreamReader}
 import java.net.URI
 
+import com.typesafe.scalalogging.LazyLogging
 
-class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) extends Spout[String] {
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.fs.{FileSystem, Path}
+
+class HdfsSpout(headerUrlPort:String, route:String, dropHeader:Boolean=false) extends Spout[String] {
 
   val fs = FileSystem.get(new URI(headerUrlPort), new Configuration())
   private var status = fs.listStatus(new Path(route))
@@ -29,7 +30,7 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
     }
   }
 
-  final case class HDFSManager private () {
+  final case class HDFSManager private () extends LazyLogging {
     val stream = fs.open(status(0).getPath)
     status = status.slice(1,status.length)
     val bufferReader = new BufferedReader(new InputStreamReader(stream))
@@ -42,10 +43,10 @@ class HGSpoutHDFS(headerUrlPort:String,route:String,dropHeader:Boolean=false) ex
       if (line == null) {
         if(status.length > 0) {
           hdfsManager = HDFSManager()
-          println("Still loading Spout...")
+          logger.info("Still loading Spout...")
           false
         } else {
-          println("Spout loaded!")
+          logger.info("Spout loaded!")
           true
         }
       } else {
