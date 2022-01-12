@@ -10,7 +10,7 @@ import com.typesafe.scalalogging.LazyLogging
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
 
-class HdfsSpoutHDFS(headerUrlPort:String, route:String, dropHeader:Boolean=false) extends Spout[String] {
+class HGSpoutHDFS(headerUrlPort:String, route:String, dropHeader:Boolean=false) extends Spout[String] {
 
   val fs = FileSystem.get(new URI(headerUrlPort), new Configuration())
   private var status = fs.listStatus(new Path(route))
