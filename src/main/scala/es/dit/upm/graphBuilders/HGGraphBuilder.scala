@@ -9,16 +9,16 @@ class HGGraphBuilder extends GraphBuilder[String] {
 
     val dataLine = tuple.split(",").map(_.trim)
 
-    val vertex = dataLine(0).toInt
+    val vertex = dataLine(0).toLong
 //    val vertexID = assignID(vertex)
     val timestamp = dataLine(1).toLong
-    val user = dataLine(2).toInt
+    val user = dataLine(2).toLong
     val hateful = dataLine(5)
 
-    val parent = dataLine(3).toInt
+    val parent = dataLine(3).toLong
 //    val parentID = assignID(parent)
 
-    val initial = dataLine(4).toInt
+    val initial = dataLine(4).toLong
 //    val initialID = assignID(parent)
 
     if (parent == 0 && initial == 0) {
