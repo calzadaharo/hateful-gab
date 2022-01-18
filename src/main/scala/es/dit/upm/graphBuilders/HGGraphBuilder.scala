@@ -22,32 +22,39 @@ class HGGraphBuilder extends GraphBuilder[String] {
     val initialID = assignID(parent)
 
     if (parent == "0" && initial == "0") {
-      addVertex(timestamp, vertexID, Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
-        ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","original")),
+      addVertex(timestamp, vertexID,
+//        Properties(
+//        ImmutableProperty("name",vertex),
+//        ImmutableProperty("author",user),
+//        ImmutableProperty("hateful",hateful),
+//        ImmutableProperty("type","original")),
         Type("Post")
       )
     } else if (parent != "0") {
-      addVertex(timestamp, vertexID, Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
-        ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","answer")),
+      addVertex(timestamp, vertexID,
+//        Properties(
+//        ImmutableProperty("name",vertex),
+//        ImmutableProperty("author",user),
+//        ImmutableProperty("hateful",hateful),
+//        ImmutableProperty("type","answer")),
         Type("Post")
       )
-      addVertex(timestamp, parentID, Properties(ImmutableProperty("name",parent)), Type("Post"))
+      addVertex(timestamp, parentID,
+//        Properties(ImmutableProperty("name",parent)), Type("Post")
+      )
       addEdge(timestamp,vertexID,parentID, Type("Answer"))
     } else {
-      addVertex(timestamp, vertexID, Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
-        ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","initial")),
+      addVertex(timestamp, vertexID,
+//        Properties(
+//        ImmutableProperty("name",vertex),
+//        ImmutableProperty("author",user),
+//        ImmutableProperty("hateful",hateful),
+//        ImmutableProperty("type","initial")),
         Type("Post")
       )
-      addVertex(timestamp, initialID, Properties(ImmutableProperty("name",initial)), Type("Post"))
+      addVertex(timestamp, initialID,
+//        Properties(ImmutableProperty("name",initial)),
+        Type("Post"))
       addEdge(timestamp,vertexID, initialID, Type("Repost"))
     }
   }

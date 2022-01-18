@@ -16,8 +16,8 @@ object Runner extends App {
   val source    = new HGSpoutHDFS(
     "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
-//  val builder   = new HGGraphBuilder()
-  val builder   = new UserGraphBuilder()
+  val builder   = new HGGraphBuilder()
+//  val builder   = new UserGraphBuilder()
   val rg        = RaphtoryGraph[String](source,builder)
 
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
@@ -30,5 +30,5 @@ object Runner extends App {
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
 
   // Whole dataset
-  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 46417964)
+  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),timestamp = 46417964)
 }
