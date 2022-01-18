@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 
 class UserGraphBuilder extends GraphBuilder[String] {
   override def parseTuple(tuple: String) = {
-    val fileLine = tuple.split(";").map(_.trim)
+    val fileLine = tuple.split(",").map(_.trim)
     //user wise
     val sourceNode = fileLine(2).toInt
     val targetNode = fileLine(3).toInt
