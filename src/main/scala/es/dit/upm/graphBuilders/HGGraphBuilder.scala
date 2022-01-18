@@ -40,7 +40,8 @@ class HGGraphBuilder extends GraphBuilder[String] {
         Type("Post")
       )
       addVertex(timestamp, parentID,
-//        Properties(ImmutableProperty("name",parent)), Type("Post")
+//        Properties(ImmutableProperty("name",parent)),
+        Type("Post")
       )
       addEdge(timestamp,vertexID,parentID, Type("Answer"))
     } else {
@@ -55,7 +56,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
       addVertex(timestamp, initialID,
 //        Properties(ImmutableProperty("name",initial)),
         Type("Post"))
-      addEdge(timestamp,vertexID, initialID, Type("Repost"))
+      addEdge(timestamp,vertexID, initialID, Type("Answer"))
     }
   }
 }
