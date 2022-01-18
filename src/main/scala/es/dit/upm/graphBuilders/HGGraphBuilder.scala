@@ -13,7 +13,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
 //    val vertexID = assignID(vertex)
     val timestamp = dataLine(1).toLong
     val user = dataLine(2).toInt
-    val hateful = dataLine(5).toInt
+    val hateful = dataLine(5)
 
     val parent = dataLine(3).toInt
 //    val parentID = assignID(parent)
