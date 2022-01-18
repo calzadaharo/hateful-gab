@@ -21,7 +21,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
     val initial = dataLine(4).toInt
 //    val initialID = assignID(parent)
 
-    if (parent == "0" && initial == "0") {
+    if (parent == 0 && initial == 0) {
       addVertex(timestamp, vertex,
 //        Properties(
 //        ImmutableProperty("name",vertex),
@@ -30,7 +30,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
 //        ImmutableProperty("type","original")),
         Type("Post")
       )
-    } else if (parent != "0") {
+    } else if (parent != 0) {
       addVertex(timestamp, vertex,
 //        Properties(
 //        ImmutableProperty("name",vertex),
