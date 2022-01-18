@@ -1,6 +1,7 @@
 package es.dit.upm
 
 import es.dit.upm.graphBuilders.HGGraphBuilder
+import es.dit.upm.graphBuilders.UserGraphBuilder
 import es.dit.upm.algorithms.DepthFromOriginal
 import com.raphtory.core.build.server.RaphtoryGraph
 import es.dit.upm.spouts.HGSpoutHDFS
@@ -15,7 +16,8 @@ object Runner extends App {
   val source    = new HGSpoutHDFS(
     "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
-  val builder   = new HGGraphBuilder()
+//  val builder   = new HGGraphBuilder()
+  val builder   = new UserGraphBuilder()
   val rg        = RaphtoryGraph[String](source,builder)
 
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
