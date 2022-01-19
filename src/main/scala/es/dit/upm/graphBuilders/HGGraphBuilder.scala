@@ -24,8 +24,8 @@ class HGGraphBuilder extends GraphBuilder[String] {
     if (parent == 0 && initial == 0) {
       addVertex(timestamp, vertex,
         Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
+        ImmutableProperty("name",vertex.toString),
+        ImmutableProperty("author",user.toString),
         ImmutableProperty("hateful",hateful),
         ImmutableProperty("type","original")),
         Type("Post")
@@ -33,28 +33,28 @@ class HGGraphBuilder extends GraphBuilder[String] {
     } else if (parent != 0) {
       addVertex(timestamp, vertex,
         Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
+        ImmutableProperty("name",vertex.toString),
+        ImmutableProperty("author",user.toString),
         ImmutableProperty("hateful",hateful),
         ImmutableProperty("type","answer")),
         Type("Post")
       )
       addVertex(timestamp, parent,
-        Properties(ImmutableProperty("name",parent)),
+        Properties(ImmutableProperty("name",parent.toString)),
         Type("Post")
       )
       addEdge(timestamp,vertex,parent, Type("Answer"))
     } else {
       addVertex(timestamp, vertex,
         Properties(
-        ImmutableProperty("name",vertex),
-        ImmutableProperty("author",user),
+        ImmutableProperty("name",vertex.toString),
+        ImmutableProperty("author",user.toString),
         ImmutableProperty("hateful",hateful),
         ImmutableProperty("type","initial")),
         Type("Post")
       )
       addVertex(timestamp, initial,
-        Properties(ImmutableProperty("name",initial)),
+        Properties(ImmutableProperty("name",initial.toString)),
         Type("Post"))
       addEdge(timestamp,vertex, initial, Type("Answer"))
     }
