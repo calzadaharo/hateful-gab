@@ -37,7 +37,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
         ImmutableProperty("author",user.toString),
         ImmutableProperty("hateful",hateful),
         ImmutableProperty("type","answer")),
-        Type("Post")
+        Type("Answer")
       )
       addVertex(timestamp, parent,
         Properties(ImmutableProperty("name",parent.toString)),
@@ -51,7 +51,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
         ImmutableProperty("author",user.toString),
         ImmutableProperty("hateful",hateful),
         ImmutableProperty("type","initial")),
-        Type("Post")
+        Type("Repost")
       )
       addVertex(timestamp, initial,
         Properties(ImmutableProperty("name",initial.toString)),
