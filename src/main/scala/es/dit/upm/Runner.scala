@@ -9,6 +9,18 @@ import es.dit.upm.spouts.HGSpoutHDFS
 import com.raphtory.spouts.FileSpout
 
 object Runner extends App {
+  val start = 0
+
+  val end = 46417964
+
+  val hour = 3600
+
+  val day = 3600*24
+
+  val week = 3600*24*7
+
+  val month = 3600*24*30
+
 //  val source    = new FileSpout(
 //    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data")
 //  val source    = new FileSpout(
@@ -30,5 +42,23 @@ object Runner extends App {
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
 
   // Whole dataset
-  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),timestamp = 46417964)
+//  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),timestamp = 46417964)
+
+  //----------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------
+  // TIME
+  //----------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------
+
+  rg.rangeQuery(DepthFromOriginal(path="/home/rcalzada/output/time/hour"),
+    start = start, end = end, increment = hour, windows=List(hour))
+
+  rg.rangeQuery(DepthFromOriginal(path="/home/rcalzada/output/time/day"),
+    start = start, end = end, increment = day, windows=List(day))
+
+  rg.rangeQuery(DepthFromOriginal(path="/home/rcalzada/output/time/week"),
+    start = start, end = end, increment = week, windows=List(week))
+
+  rg.rangeQuery(DepthFromOriginal(path="/home/rcalzada/output/time/month"),
+    start = start, end = end, increment = month, windows=List(month))
 }
