@@ -53,32 +53,32 @@ object Runner extends App {
 
   //----------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------
-  // TIME
+  // TIME - INTERVALS
   //----------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------
 
-	for (i <- 0 to 3) {
-		if(i == 0) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
-				start = start, end = end, increment = hour, windows = List(hour))
-			Thread.sleep(5000)
-		}
-		else if(i == 1) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
-				start = start, end = end, increment = day, windows = List(day))
-			Thread.sleep(5000)
-		}
-		else if(i == 2) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
-				start = start, end = end, increment = week, windows = List(week))
-			Thread.sleep(5000)
-		}
-		else if(i == 3) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
-				start = start, end = end, increment = month, windows = List(month))
-			Thread.sleep(5000)
-		}
-	}
+//	for (i <- 0 to 3) {
+//		if(i == 0) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
+//				start = start, end = end, increment = hour, windows = List(hour))
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 1) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
+//				start = start, end = end, increment = day, windows = List(day))
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 2) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
+//				start = start, end = end, increment = week, windows = List(week))
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 3) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
+//				start = start, end = end, increment = month, windows = List(month))
+//			Thread.sleep(5000)
+//		}
+//	}
 
 //	for (i <- 0 to 1) {
 //		if(i == 0) {
@@ -92,4 +92,46 @@ object Runner extends App {
 //		  Thread.sleep(5000)
 //	    	}
 //	  }
+
+	//----------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------
+	// TIME - WINDOW
+	//----------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------
+
+//	for (i <- 0 to 3) {
+//		if(i == 0) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
+//				start = start, end = end, increment = hour)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 1) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
+//				start = start, end = end, increment = day)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 2) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
+//				start = start, end = end, increment = week)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 3) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
+//				start = start, end = end, increment = month)
+//			Thread.sleep(5000)
+//		}
+//	}
+
+	for (i <- 0 to 1) {
+		if(i == 0) {
+			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test1"),
+				start=start, end = 3062658, increment=hour, windows=List(hour))
+			Thread.sleep(5000)
+		}
+		if(i == 1) {
+			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test2"),
+				start=start, end = 3062658, increment=day, windows=List(day))
+			Thread.sleep(5000)
+		}
+	}
 }
