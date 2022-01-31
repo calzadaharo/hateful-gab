@@ -21,13 +21,13 @@ object Runner extends App {
 
   val month = 3600*24*30
 
-//  val source    = new FileSpout(
-//    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
-//    "part-00000-hateful_gab.csv")
+  val source    = new FileSpout(
+    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
+    "part-00000-hateful_gab.csv")
 //  val source    = new FileSpout(
 //    "/home/rcalzada/data/hateful_gab.csv")
-  val source    = new HGSpoutHDFS(
-    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
+//  val source    = new HGSpoutHDFS(
+//    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
   val builder   = new HGGraphBuilder()
 //  val builder   = new UserGraphBuilder()
@@ -99,39 +99,39 @@ object Runner extends App {
 	//----------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------
 
-//	for (i <- 0 to 3) {
-//		if(i == 0) {
-//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
-//				start = start, end = end, increment = hour)
-//			Thread.sleep(5000)
-//		}
-//		else if(i == 1) {
-//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
-//				start = start, end = end, increment = day)
-//			Thread.sleep(5000)
-//		}
-//		else if(i == 2) {
-//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
-//				start = start, end = end, increment = week)
-//			Thread.sleep(5000)
-//		}
-//		else if(i == 3) {
-//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
-//				start = start, end = end, increment = month)
-//			Thread.sleep(5000)
-//		}
-//	}
-
-	for (i <- 0 to 1) {
+	for (i <- 0 to 3) {
 		if(i == 0) {
-			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test1"),
-				start=start, end = 3062658, increment=hour, windows=List(hour))
+			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
+				start = start, end = end, increment = hour)
 			Thread.sleep(5000)
 		}
-		if(i == 1) {
-			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test2"),
-				start=start, end = 3062658, increment=day, windows=List(day))
+		else if(i == 1) {
+			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
+				start = start, end = end, increment = day)
+			Thread.sleep(5000)
+		}
+		else if(i == 2) {
+			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
+				start = start, end = end, increment = week)
+			Thread.sleep(5000)
+		}
+		else if(i == 3) {
+			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
+				start = start, end = end, increment = month)
 			Thread.sleep(5000)
 		}
 	}
+
+//	for (i <- 0 to 1) {
+//		if(i == 0) {
+//			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test1"),
+//				start=start, end = 3062658, increment=hour)
+//			Thread.sleep(5000)
+//		}
+//		if(i == 1) {
+//			rg.rangeQuery(DepthFromOriginal(path="/home/rodrigo/output/test2"),
+//				start=start, end = 3062658, increment=day)
+//			Thread.sleep(5000)
+//		}
+//	}
 }
