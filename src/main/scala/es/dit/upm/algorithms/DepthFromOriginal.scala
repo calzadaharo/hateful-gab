@@ -30,11 +30,11 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
           vertex.setState("level",level)
           vertex.setState("cascade",cascade)
           vertex.messageAllIngoingNeighbors(cascade,level)
-      }, iterations = 10000, executeMessagedOnly = true)
+      }, iterations = 100000, executeMessagedOnly = true)
 
       .select ({ vertex =>
         Row(vertex.ID,
-          vertex,
+          vertex.getPropertyOrElse("timestamp",null),
           vertex.getStateOrElse("cascade",null),
           vertex.getStateOrElse("level",null),
           vertex.getPropertyOrElse("hateful","PROBLEM"))

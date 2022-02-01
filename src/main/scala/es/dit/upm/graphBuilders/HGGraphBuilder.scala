@@ -11,6 +11,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
 
     val vertex = dataLine(0).toLong
 //    val vertexID = assignID(vertex)
+    val timeString = dataLine(1)
     val timestamp = dataLine(1).toLong
     val user = dataLine(2).toLong
     val hateful = dataLine(5)
@@ -26,6 +27,7 @@ class HGGraphBuilder extends GraphBuilder[String] {
         Properties(
 //        ImmutableProperty("name",vertex.toString),
 //        ImmutableProperty("author",user.toString),
+          ImmutableProperty("timestamp",timeString),
           ImmutableProperty("hateful",hateful),
           ImmutableProperty("type","original")),
         Type("Post")
@@ -35,22 +37,24 @@ class HGGraphBuilder extends GraphBuilder[String] {
         Properties(
 //        ImmutableProperty("name",vertex.toString),
 //        ImmutableProperty("author",user.toString),
-        ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","answer")),
+          ImmutableProperty("timestamp",timeString),
+          ImmutableProperty("hateful",hateful),
+         ImmutableProperty("type","answer")),
         Type("Post")
       )
 
       addVertex(timestamp, parent, Type("Post"))
 
-      addEdge(timestamp,vertex,parent, Type("Answer"))
+      addEdge(timestamp,vertex,parent,Type("Answer"))
 
     } else {
       addVertex(timestamp, vertex,
         Properties(
 //        ImmutableProperty("name",vertex.toString),
 //        ImmutableProperty("author",user.toString),
-        ImmutableProperty("hateful",hateful),
-        ImmutableProperty("type","initial")),
+          ImmutableProperty("timestamp",timeString),
+          ImmutableProperty("hateful",hateful),
+          ImmutableProperty("type","initial")),
         Type("Post")
       )
       addVertex(timestamp, initial, Type("Post"))

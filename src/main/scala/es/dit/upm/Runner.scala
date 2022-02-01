@@ -43,7 +43,7 @@ object Runner extends App {
 //  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),42977)
 
   // Partition 0
-//  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 3062658)
+  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output/new"),timestamp = 3062658)
 
   // Partition 1
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
@@ -99,28 +99,28 @@ object Runner extends App {
 	//----------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------
 
-	for (i <- 0 to 3) {
-		if(i == 0) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
-				start = start, end = end, increment = hour)
-			Thread.sleep(5000)
-		}
-		else if(i == 1) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
-				start = start, end = end, increment = day)
-			Thread.sleep(5000)
-		}
-		else if(i == 2) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
-				start = start, end = end, increment = week)
-			Thread.sleep(5000)
-		}
-		else if(i == 3) {
-			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
-				start = start, end = end, increment = month)
-			Thread.sleep(5000)
-		}
-	}
+//	for (i <- 0 to 3) {
+//		if(i == 0) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/hours"),
+//				start = start, end = end, increment = hour)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 1) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/day"),
+//				start = start, end = end, increment = day)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 2) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/week"),
+//				start = start, end = end, increment = week)
+//			Thread.sleep(5000)
+//		}
+//		else if(i == 3) {
+//			rg.rangeQuery(DepthFromOriginal(path = "/home/rcalzada/output/time/month"),
+//				start = start, end = end, increment = month)
+//			Thread.sleep(5000)
+//		}
+//	}
 
 //	for (i <- 0 to 1) {
 //		if(i == 0) {
