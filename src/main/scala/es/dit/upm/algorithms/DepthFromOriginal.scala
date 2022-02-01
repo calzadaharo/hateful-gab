@@ -34,9 +34,10 @@ class DepthFromOriginal (path: String) extends GraphAlgorithm{
 
       .select ({ vertex =>
         Row(vertex.ID,
+          vertex,
           vertex.getStateOrElse("cascade",null),
-          vertex.getStateOrElse("level",null)
-          ,vertex.getPropertyOrElse("hateful","PROBLEM"))
+          vertex.getStateOrElse("level",null),
+          vertex.getPropertyOrElse("hateful","PROBLEM"))
       })
 
       .writeTo(path)
