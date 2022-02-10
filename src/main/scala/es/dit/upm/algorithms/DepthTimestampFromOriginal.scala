@@ -43,7 +43,7 @@ class DepthTimestampFromOriginal(path: String) extends GraphAlgorithm{
               vertex.messageAllIngoingNeighbors(cascade,timestamp,level,true)
             } else {
               // Check if vertex timestamp is higher than the message one
-              if (timestamp < vertex.getPropertyOrElse[Long]("timestamp",null)) {
+              if (timestamp < vertex.getPropertyOrElse[Long]("timestamp",0)) {
                 vertex.setState("index",index)
               }
               // Common for both higher and lower than timestamp

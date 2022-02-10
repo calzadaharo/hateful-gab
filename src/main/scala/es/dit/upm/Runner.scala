@@ -22,11 +22,11 @@ object Runner extends App {
 
   val month = 3600*24*30
 
-//  val source    = new FileSpout(
-//    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
-//    "part-00000-hateful_gab.csv")
   val source    = new FileSpout(
-    "/home/rcalzada/data/hateful_gab.csv")
+    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
+    "part-00000-hateful_gab.csv")
+//  val source    = new FileSpout(
+//    "/home/rcalzada/data/hateful_gab.csv")
 //  val source    = new HGSpoutHDFS(
 //    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
