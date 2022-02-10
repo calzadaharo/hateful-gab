@@ -35,15 +35,23 @@ class DepthTimestampFromOriginal(path: String) extends GraphAlgorithm{
 
           // Check if message is already descending
           if (flag) {
-            if (timestamp < vertex.getPropertyOrElse[Long]("timestamp",null)) {
-              if (vertex.getPropertyOrElse("type",null) == "original"){
-                vertex.setState("cascade",cascade)
-                vertex.setState("level",level)
-              }
+            // Check if the message was born in the original
+            if (cascade != 0) {
+              vertex.setState("cascade",cascade)
+              vertex.setState("level",level)
               vertex.setState("index",index)
+              vertex.messageAllIngoingNeighbors(cascade,timestamp,level,true)
+            } else {
+              // Check if vertex timestamp is higher than the message one
+              if (timestamp < vertex.getPropertyOrElse[Long]("timestamp",null)) {
+                vertex.setState("index",index)
+              }
+              // Common for both higher and lower than timestamp
+              vertex.messageAllIngoingNeighbors(0,timestamp,0,true)
             }
-            vertex.messageAllIngoingNeighbors(cascade,timestamp,level,true)
+          // Message ascending
           } else {
+            // Check is message has reached the original
             if (vertex.getPropertyOrElse("type",null) == "original"){
               vertex.messageAllIngoingNeighbors(0,timestamp,0,true)
             } else {

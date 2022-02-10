@@ -3,6 +3,7 @@ package es.dit.upm
 import es.dit.upm.graphBuilders.HGGraphBuilder
 import es.dit.upm.graphBuilders.UserGraphBuilder
 import es.dit.upm.algorithms.DepthFromOriginal
+import es.dit.upm.algorithms.DepthTimestampFromOriginal
 import com.raphtory.core.build.server.RaphtoryGraph
 import es.dit.upm.spouts.HGSpoutHDFS
 //import com.raphtory.algorithms.{ConnectedComponents}
@@ -39,7 +40,8 @@ object Runner extends App {
   //----------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------
 
-//  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
+  // Testing algorithms
+  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
 //  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),42977)
 
   // Partition 0
@@ -49,7 +51,7 @@ object Runner extends App {
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
 
   // Whole dataset
-  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output/new"),timestamp = 46417964)
+//  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output/new"),timestamp = 46417964)
 
   //----------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------
