@@ -22,13 +22,13 @@ object Runner extends App {
 
   val month = 3600*24*30
 
-  val source    = new FileSpout(
-    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
-    "part-00000-hateful_gab.csv")
+//  val source    = new FileSpout(
+//    "/home/rodrigo/Examples/hateful-gab/src/main/scala/es/dit/upm/data/",
+//    "part-00000-hateful_gab.csv")
 //  val source    = new FileSpout(
 //    "/home/rcalzada/data/hateful_gab.csv")
-//  val source    = new HGSpoutHDFS(
-//    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
+  val source    = new HGSpoutHDFS(
+    "hdfs://com31.dit.upm.es:9000/", "/data/rcalzada/datasets/definitive/hateful_gab.csv/")
 
   val builder   = new HGGraphBuilder()
 //  val builder   = new UserGraphBuilder()
@@ -45,13 +45,13 @@ object Runner extends App {
 //  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),42977)
 
   // Partition 0
-  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 3062658)
+//  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 3062658)
 
   // Partition 1
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
 
   // Whole dataset
-//  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output/new"),timestamp = 46417964)
+  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rcalzada/output/DTfO"),timestamp = 46417964)
 
   //----------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------
