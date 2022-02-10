@@ -18,7 +18,6 @@ class DepthTimestampFromOriginal(path: String) extends GraphAlgorithm{
               vertex.messageAllIngoingNeighbors(vertex.ID,timestamp,0,true)
             } else {
               val timestamp = vertex.getPropertyOrElse("timestamp","0").toLong
-              println("vertex: "+vertex.ID + ", neighbors: "+vertex.getOutNeighbours())
               vertex.setState("index", 0)
               vertex.messageAllOutgoingNeighbors(0.toLong,timestamp,0,false)
             }
@@ -34,22 +33,18 @@ class DepthTimestampFromOriginal(path: String) extends GraphAlgorithm{
             val level = message._3 + 1
             val flag = message._4
             val index = vertex.getStateOrElse[Int]("index",0) + 1
-            
-            println("MESSAGE: "+flag+", vertex: "+ vertex.ID)
+
             // Check if message is already descending
             if (flag) {
               // Check if the message was born in the original
               if (cascade != 0) {
-                println("Update cascade: "+cascade+", "+index)
                 vertex.setState("cascade",cascade)
                 vertex.setState("level",level)
                 vertex.setState("index",index)
                 vertex.messageAllIngoingNeighbors(cascade,timestamp,level,true)
               } else {
                 // Check if vertex timestamp is higher than the message one
-                println(timestamp + " " + vertex.getPropertyOrElse("timestamp","0").toLong)
                 if (timestamp < vertex.getPropertyOrElse("timestamp","0").toLong) {
-                  println("Update only index: "+index)
                   vertex.setState("index",index)
                 }
                 // Common for both higher and lower than timestamp
@@ -59,10 +54,8 @@ class DepthTimestampFromOriginal(path: String) extends GraphAlgorithm{
             } else {
               // Check is message has reached the original
               if (vertex.getPropertyOrElse("type",null) == "original"){
-                println("REACH ORIGINAL: "+timestamp)
                 vertex.messageAllIngoingNeighbors(0.toLong,timestamp,0,true)
               } else {
-                println("NOT ORIGINAL: "+timestamp)
                 vertex.messageAllOutgoingNeighbors(0.toLong,timestamp,0,false)
               }
             }

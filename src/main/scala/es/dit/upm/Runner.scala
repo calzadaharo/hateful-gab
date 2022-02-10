@@ -41,11 +41,11 @@ object Runner extends App {
   //----------------------------------------------------------------------------------------------------
 
   // Testing algorithms
-  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
+//  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 42977)
 //  rg.pointQuery(DepthFromOriginal(path="/home/rcalzada/output"),42977)
 
   // Partition 0
-//  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output/new"),timestamp = 3062658)
+  rg.pointQuery(DepthTimestampFromOriginal(path="/home/rodrigo/output"),timestamp = 3062658)
 
   // Partition 1
 //  rg.pointQuery(DepthFromOriginal(path="/home/rodrigo/output"),5505216)
